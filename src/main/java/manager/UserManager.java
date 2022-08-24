@@ -36,31 +36,33 @@ public class UserManager {
             }
             System.out.println(user);
             System.out.println("User was added successfully! ");
+        } catch (SQLIntegrityConstraintViolationException e) {
+            System.out.println("Invalid event ID.Please try again! ");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public List<User> getAllUsers() {
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM user");
-            List<User> users = new LinkedList<>();
-            while (resultSet.next()) {
-                User user = new User();
-                user.setId(resultSet.getInt("id"));
-                user.setName(resultSet.getString("name"));
-                user.setSurname(resultSet.getString("surname"));
-                user.setEmail(resultSet.getString("email"));
-                user.setEventId(resultSet.getInt("event_id"));
-                users.add(user);
+        public List<User> getAllUsers () {
+            try {
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM user");
+                List<User> users = new LinkedList<>();
+                while (resultSet.next()) {
+                    User user = new User();
+                    user.setId(resultSet.getInt("id"));
+                    user.setName(resultSet.getString("name"));
+                    user.setSurname(resultSet.getString("surname"));
+                    user.setEmail(resultSet.getString("email"));
+                    user.setEventId(resultSet.getInt("event_id"));
+                    users.add(user);
+                }
+                return users;
+            } catch (SQLException e) {
+                e.printStackTrace();
+
             }
-            return users;
-        } catch (SQLException e) {
-            e.printStackTrace();
-
+            return null;
         }
-        return null;
     }
-}
 
