@@ -1,2 +1,6 @@
-package model;public enum EventType {
+package model;
+
+public enum EventType {
+    CONFERENCE,
+   WEBINAR
 }
