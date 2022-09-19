@@ -5,33 +5,33 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnectionProvider {
-    private static DBConnectionProvider instance = new DBConnectionProvider();
+    private final static DBConnectionProvider INSTANCE = new DBConnectionProvider();
 
-    private static final String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
+//    private static final String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
     private static final String DB_URL = "jdbc:mysql://localhost:3306/event_user?characterEncoding=utf8";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
     private Connection connection;
 
     public DBConnectionProvider() {
-        try {
-            Class.forName(DRIVER_NAME);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            Class.forName(DRIVER_NAME);
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public static DBConnectionProvider getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
-    public Connection getConnection() throws SQLException {
-        if (connection == null || connection.isClosed()) {
-            try {
+    public Connection getConnection() {
+        try {
+            if (connection == null || connection.isClosed()) {
                 connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return connection;
     }

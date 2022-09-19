@@ -14,10 +14,18 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.21</version>
+            <version>8.0.30</version>
         </dependency>
 
         <dependency>
@@ -25,12 +33,6 @@
             <artifactId>lombok</artifactId>
             <version>1.18.24</version>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.googlecode.maven-properties-enum-plugin</groupId>
-            <artifactId>maven-properties-enum-plugin</artifactId>
-            <version>1.1.4</version>
         </dependency>
 
     </dependencies>

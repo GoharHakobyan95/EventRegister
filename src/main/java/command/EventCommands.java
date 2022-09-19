@@ -1,6 +1,6 @@
 package command;
 
-public interface Commands {
+public interface EventCommands {
     int EXIT = 0;
     int ADD_EVENT = 1;
     int ADD_USER = 2;
